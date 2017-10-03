@@ -1,4 +1,4 @@
-package bsds;
+package bsds.Usingthreadpool.Extras;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,7 +32,7 @@ public class StatGenerator {
 
   // Get 99 and 95th percentiles from latency
   public int latencyPercentile(int percentile) {
-    int index = new Double( Math.ceil(percentile * numSuccesses / 100)).intValue() - 1;
+    int index = (percentile * numSuccesses / 100).intValue() - 1;
     List<Integer> latencies = getLatencies();
     Collections.sort(latencies);
     return latencies.get(index);
