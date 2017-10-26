@@ -22,7 +22,9 @@ import java.util.ArrayList;
 public class MyClient {
     private final String URL = "http://localhost:7070";
     //private final String URL = "http://34.214.91.35:8080/Assignment2-tomcat_war/rest/load";
-    static final String FILE_PATH = "/Users/divyaagarwal/Desktop/bsds/Assignment2/BSDSAssignment2Day1-TEST.csv";
+    static final String FILE_PATH = "/Users/divyaagarwal/Desktop/bsds/Assignment2/BSDSAssignment2Day1.csv";
+
+    static final String FILE_PATH2 = "/Users/divyaagarwal/Desktop/bsds/Assignment2/BSDSAssignment2Day2.csv";
 
     private List<Record> Records= new ArrayList<Record>();
 
@@ -201,7 +203,11 @@ public class MyClient {
         //myClient.postTasks(70);
 
         //myClient.getOneTask(1,1);
-        //myClient.getAllTasks(100);
+
+        //STEP 6
+
+        myClient.readCsvFile(FILE_PATH2);
+        myClient.getAllTasks(100);
 
 
         // Truncate the data present in the Table to start fresh
