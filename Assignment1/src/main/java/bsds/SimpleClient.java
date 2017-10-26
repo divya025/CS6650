@@ -40,6 +40,7 @@ public static void main(String[] args) {
     String hostName;
     int port;
     int MAX_THREADS = 10;
+    int numItr = 100;
 
     if (args.length == 2) {
         hostName = args[0];
@@ -70,6 +71,7 @@ public static void main(String[] args) {
 
     SocketClientThreadEx clients[] = new SocketClientThreadEx[MAX_THREADS];
     long startTime = System.currentTimeMillis();
+    int count = 0;
     for (int i = 0; i < MAX_THREADS; i++) {
         clients[i] = new SocketClientThreadEx(hostName, port, barrier);
         clients[i].start();
@@ -83,8 +85,12 @@ public static void main(String[] args) {
         long endTime = System.currentTimeMillis();
         long totalTime = endTime - startTime;
         System.out.print("All threads complete....");
-        System.out.println("    Time:" + System.currentTimeMillis());
-        System.out.println("The total time is:" + totalTime);
+        System.out.println("Time:" + System.currentTimeMillis());
+        System.out.println("The (wall) total time is:" + totalTime);
+        System.out.println("Total number of calls : " +(2*MAX_THREADS*numItr));
+        SocketClientThreadEx obj = new SocketClientThreadEx(null,0,null);
+        System.out.println("Total number of SUCCESSFUL calls: "+obj.getCount());
+
     } catch (InterruptedException ex) {
         return;
     } catch (BrokenBarrierException ex) {
